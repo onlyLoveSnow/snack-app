@@ -25,6 +25,9 @@ import butterknife.ButterKnife;
 
 public class SnackFragment extends Fragment {
 
+    @BindView(R.id.snackLeftRecyclerView)
+    RecyclerView leftRecyclerview;
+
     private SnackViewModel mViewModel;
 
     public static SnackFragment newInstance() {
@@ -35,6 +38,8 @@ public class SnackFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_snack, container, false);
+        // 绑定资源
+        ButterKnife.bind(this, root);
         return root;
     }
 
@@ -43,6 +48,30 @@ public class SnackFragment extends Fragment {
         super.onActivityCreated(savedInstanceState);
         mViewModel = ViewModelProviders.of(this).get(SnackViewModel.class);
         // TODO: Use the ViewModel
-     }
+        leftRecyclerview.setLayoutManager(new LinearLayoutManager(getActivity()));
 
+        initLeftAdapter();
+    }
+
+    private void initLeftAdapter() {
+        SnackLeftAdapter leftAdapter = new SnackLeftAdapter(DataServer.getTypeData());
+        leftAdapter.setAnimationEnable(true);
+        leftAdapter.setAdapterAnimation(new SnackLeftAnimation());
+
+        // 触发点击按钮
+        leftAdapter.setOnItemClickListener(new OnItemClickListener() {
+            @Override
+            public void onItemClick(@NonNull BaseQuickAdapter<?, ?> adapter, @NonNull View view, int position) {
+                String item = (String) adapter.getItem(position);
+                Toast.makeText(getActivity(), "点击了" + item, Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        // 设置左边列表适配器
+        leftRecyclerview.setAdapter(leftAdapter);
+    }
+
+    public void initRightAdapter() {
+
+    }
 }
