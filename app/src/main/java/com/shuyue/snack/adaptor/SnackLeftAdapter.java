@@ -1,7 +1,6 @@
 package com.shuyue.snack.adaptor;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
-import com.chad.library.adapter.base.listener.OnItemClickListener;
 import com.chad.library.adapter.base.viewholder.BaseViewHolder;
 import com.shuyue.snack.R;
 
@@ -20,7 +19,7 @@ public class SnackLeftAdapter extends BaseQuickAdapter<String, BaseViewHolder> {
      */
     @Override
     protected void convert(@NotNull BaseViewHolder baseViewHolder, String s) {
-        baseViewHolder.setText(R.id.snackLeftType, "今天爱淑悦" + (baseViewHolder.getAdapterPosition() - getHeaderLayoutCount() + "次"));
+        baseViewHolder.setText(R.id.snackLeftType, s);
     }
 
 }

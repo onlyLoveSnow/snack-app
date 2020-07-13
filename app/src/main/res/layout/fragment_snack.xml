@@ -4,22 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="horizontal"
-    android:weightSum="5"
+    android:weightSum="10"
     tools:context=".ui.snack.SnackFragment">
-
-    <LinearLayout
-        android:layout_width="0dp"
-        android:layout_height="match_parent"
-        android:layout_weight="2"
-        android:orientation="vertical">
-
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/snackLeftRecyclerView"
-            android:layout_width="match_parent"
-            android:background="@color/colorBgWhite"
-            android:layout_height="match_parent" />
-    </LinearLayout>
 
     <LinearLayout
         android:layout_width="0dp"
@@ -27,10 +13,26 @@
         android:layout_weight="3"
         android:orientation="vertical">
 
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/snackLeftRecyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/colorBgWhite"
+            android:overScrollMode="never" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="7"
+        android:orientation="vertical"
+        android:overScrollMode="never">
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/snackRightRecyclerView"
             android:layout_width="match_parent"
-            android:background="@color/colorBgWhite"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent"
+            android:background="@color/colorBgWhite" />
     </LinearLayout>
 </LinearLayout>
