@@ -4,6 +4,7 @@ import android.app.Application;
 
 import com.shuyue.snack.model.Snack;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class MyApplication extends Application {
@@ -26,13 +27,10 @@ public class MyApplication extends Application {
         return cartSnacks;
     }
 
-    public static void setCartSnacks(List<Snack> cartSnacks) {
-        MyApplication.cartSnacks = cartSnacks;
-    }
-
     @Override
     public void onCreate() {
         super.onCreate();
         appContext = this;
+        cartSnacks = new ArrayList<>();
     }
 }

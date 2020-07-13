@@ -15,11 +15,13 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.listener.OnItemClickListener;
+import com.shuyue.snack.MyApplication;
 import com.shuyue.snack.R;
 import com.shuyue.snack.adaptor.SnackLeftAdapter;
 import com.shuyue.snack.adaptor.SnackRightAdapter;
 import com.shuyue.snack.animator.SnackLeftAnimation;
 import com.shuyue.snack.data.DataServer;
+import com.shuyue.snack.model.Snack;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -81,6 +83,17 @@ public class SnackFragment extends Fragment {
         SnackRightAdapter rightAdapter = new SnackRightAdapter(DataServer.getSnack());
         rightAdapter.setAnimationEnable(true);
         rightAdapter.setAnimationWithDefault(BaseQuickAdapter.AnimationType.SlideInRight);
+
+        // 左边列表点击事件
+        rightAdapter.addChildClickViewIds(R.id.snackRightAddBtn);
+        rightAdapter.setOnItemChildClickListener((adapter, view, position) -> {
+            Snack snack = (Snack) adapter.getItem(position);
+            if (view.getId() == R.id.snackRightAddBtn) {
+                // 添加到购物车
+                MyApplication.getCartSnacks().add(snack);
+                Toast.makeText(getActivity(), "已添加" + snack.getName() + "到购物车", Toast.LENGTH_SHORT).show();
+            }
+        });
 
         // 设置右边列表适配器
         rightRecyclerView.setAdapter(rightAdapter);
