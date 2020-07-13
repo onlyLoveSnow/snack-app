@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Snack App</string>
+    <string name="title_home">首页</string>
+    <string name="title_snack">点菜</string>
+    <string name="title_place">下单</string>
+    <string name="title_my">我的</string>
+</resources>

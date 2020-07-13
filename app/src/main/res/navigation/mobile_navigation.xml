@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/navigation_home">
+
+    <fragment
+        android:id="@+id/navigation_home"
+        android:name="com.shuyue.snack.ui.home.HomeFragment"
+        android:label="@string/title_home"
+        tools:layout="@layout/fragment_home" />
+
+    <fragment
+        android:id="@+id/navigation_snack"
+        android:name="com.shuyue.snack.ui.snack.SnackFragment"
+        android:label="@string/title_snack"
+        tools:layout="@layout/fragment_snack" />
+
+    <fragment
+        android:id="@+id/navigation_place"
+        android:name="com.shuyue.snack.ui.place.PlaceFragment"
+        android:label="@string/title_place"
+        tools:layout="@layout/fragment_place" />
+
+    <fragment
+        android:id="@+id/navigation_my"
+        android:name="com.shuyue.snack.ui.my.MyFragment"
+        android:label="@string/title_my"
+        tools:layout="@layout/fragment_my" />
+</navigation>
