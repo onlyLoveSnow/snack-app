@@ -17,6 +17,7 @@ import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.listener.OnItemClickListener;
 import com.shuyue.snack.R;
 import com.shuyue.snack.adaptor.SnackLeftAdapter;
+import com.shuyue.snack.adaptor.SnackRightAdapter;
 import com.shuyue.snack.animator.SnackLeftAnimation;
 import com.shuyue.snack.data.DataServer;
 
@@ -27,6 +28,9 @@ public class SnackFragment extends Fragment {
 
     @BindView(R.id.snackLeftRecyclerView)
     RecyclerView leftRecyclerview;
+
+    @BindView(R.id.snackRightRecyclerView)
+    RecyclerView rightRecyclerView;
 
     private SnackViewModel mViewModel;
 
@@ -47,10 +51,12 @@ public class SnackFragment extends Fragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         mViewModel = ViewModelProviders.of(this).get(SnackViewModel.class);
-        // TODO: Use the ViewModel
+
         leftRecyclerview.setLayoutManager(new LinearLayoutManager(getActivity()));
+        rightRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
         initLeftAdapter();
+        initRightAdapter();
     }
 
     private void initLeftAdapter() {
@@ -72,6 +78,11 @@ public class SnackFragment extends Fragment {
     }
 
     public void initRightAdapter() {
+        SnackRightAdapter rightAdapter = new SnackRightAdapter(DataServer.getSnack());
+        rightAdapter.setAnimationEnable(true);
+        rightAdapter.setAnimationWithDefault(BaseQuickAdapter.AnimationType.SlideInRight);
 
+        // 设置右边列表适配器
+        rightRecyclerView.setAdapter(rightAdapter);
     }
 }
