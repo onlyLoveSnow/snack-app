@@ -1,7 +1,5 @@
 package com.shuyue.snack.adaptor;
 
-import android.content.Intent;
-
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.viewholder.BaseViewHolder;
 import com.shuyue.snack.R;
@@ -14,7 +12,7 @@ import java.util.List;
 public class SnackRightAdapter extends BaseQuickAdapter<Snack, BaseViewHolder> {
 
     public SnackRightAdapter(List<Snack> snacks) {
-        super(R.layout.snack_right_item, snacks);
+        super(R.layout.item_snack_right, snacks);
     }
 
     @Override

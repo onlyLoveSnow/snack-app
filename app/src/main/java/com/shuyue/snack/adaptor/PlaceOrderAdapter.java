@@ -15,7 +15,7 @@ import java.util.List;
 public class PlaceOrderAdapter extends BaseQuickAdapter<Snack, BaseViewHolder> {
 
     public PlaceOrderAdapter(List<Snack> snacks) {
-        super(R.layout.place_order_item, snacks);
+        super(R.layout.item_place_order, snacks);
     }
 
     @Override

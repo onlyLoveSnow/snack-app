@@ -11,7 +11,7 @@ import java.util.List;
 public class SnackLeftAdapter extends BaseQuickAdapter<String, BaseViewHolder> {
 
     public SnackLeftAdapter(List<String> typeList) {
-        super(R.layout.snack_left_item, typeList);
+        super(R.layout.item_snack_left, typeList);
     }
 
     /**
