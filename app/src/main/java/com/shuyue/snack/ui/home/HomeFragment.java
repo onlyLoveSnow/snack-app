@@ -42,7 +42,7 @@ public class HomeFragment extends Fragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
-//        homeRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+        // 首页瀑布流列表
         homeRecyclerView.setLayoutManager(new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL));
 
         initHomeAdapter();
