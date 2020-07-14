@@ -19,7 +19,6 @@ import com.shuyue.snack.MyApplication;
 import com.shuyue.snack.R;
 import com.shuyue.snack.adaptor.SnackLeftAdapter;
 import com.shuyue.snack.adaptor.SnackRightAdapter;
-import com.shuyue.snack.animator.SnackLeftAnimation;
 import com.shuyue.snack.data.DataServer;
 import com.shuyue.snack.model.Snack;
 
@@ -34,7 +33,7 @@ public class SnackFragment extends Fragment {
     @BindView(R.id.snackRightRecyclerView)
     RecyclerView rightRecyclerView;
 
-    private SnackViewModel mViewModel;
+    private SnackViewModel snackViewModel;
 
     public static SnackFragment newInstance() {
         return new SnackFragment();
@@ -43,6 +42,7 @@ public class SnackFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
+        snackViewModel = ViewModelProviders.of(this).get(SnackViewModel.class);
         View root = inflater.inflate(R.layout.fragment_snack, container, false);
         // 绑定资源
         ButterKnife.bind(this, root);
@@ -52,7 +52,6 @@ public class SnackFragment extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        mViewModel = ViewModelProviders.of(this).get(SnackViewModel.class);
 
         leftRecyclerview.setLayoutManager(new LinearLayoutManager(getActivity()));
         rightRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
@@ -62,9 +61,11 @@ public class SnackFragment extends Fragment {
     }
 
     private void initLeftAdapter() {
+        // 实例化左边适配器对象
         SnackLeftAdapter leftAdapter = new SnackLeftAdapter(DataServer.getTypeData());
+        // 设置动画效果
         leftAdapter.setAnimationEnable(true);
-        leftAdapter.setAdapterAnimation(new SnackLeftAnimation());
+        leftAdapter.setAnimationWithDefault(BaseQuickAdapter.AnimationType.SlideInLeft);
 
         // 触发点击按钮
         leftAdapter.setOnItemClickListener(new OnItemClickListener() {
@@ -80,7 +81,9 @@ public class SnackFragment extends Fragment {
     }
 
     public void initRightAdapter() {
+        // 实例化右边适配器对象
         SnackRightAdapter rightAdapter = new SnackRightAdapter(DataServer.getSnack());
+        // 设置动画效果
         rightAdapter.setAnimationEnable(true);
         rightAdapter.setAnimationWithDefault(BaseQuickAdapter.AnimationType.SlideInRight);
 

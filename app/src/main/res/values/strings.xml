@@ -5,4 +5,9 @@
     <string name="title_place">下单</string>
     <string name="title_my">我的</string>
     <string name="snack_add_btn">+</string>
+    <string name="place_money_label">合计: </string>
+    <string name="place_order_btn">下单</string>
+    <string name="place_less_label">-</string>
+    <string name="place_add_label">+</string>
+    <string name="place_order_count_init">1</string>
 </resources>

@@ -1,23 +1,53 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.place.PlaceFragment" >
+    android:orientation="vertical"
+    tools:context=".ui.place.PlaceFragment">
 
-    <TextView
-        android:id="@+id/text_notifications"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/placeRecyclerView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:textAlignment="center"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="@color/colorBgWhite"
+        android:overScrollMode="never" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="#eee"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginStart="12dp"
+            android:gravity="center"
+            android:text="@string/place_money_label"
+            android:textSize="22sp" />
+
+        <TextView
+            android:id="@+id/placeMoney"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:text="￥100.0"
+            android:textColor="#F56C6C"
+            android:textSize="26dp" />
+
+        <Button
+            android:id="@+id/placeBuyBtn"
+            android:layout_width="wrap_content"
+            android:textSize="20sp"
+            android:textColor="#fff"
+            android:layout_height="match_parent"
+            android:layout_margin="8dp"
+            android:background="@drawable/place_buy_btn"
+            android:text="@string/place_order_btn" />
+
+    </LinearLayout>
+
+</LinearLayout>

@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="120dp"
+    android:layout_marginLeft="12dp"
+    android:layout_marginTop="8dp"
+    android:layout_marginRight="12dp"
+    android:layout_marginBottom="4dp"
+    android:background="@drawable/place_order_item">
+
+    <ImageView
+        android:id="@+id/placeOrderImage"
+        android:layout_width="90dp"
+        android:layout_height="90dp"
+        android:layout_marginStart="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@mipmap/avatar" />
+
+    <TextView
+        android:id="@+id/placeOrderName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="18dp"
+        android:text="TextView"
+        android:textSize="22sp"
+        app:layout_constraintStart_toEndOf="@+id/placeOrderImage"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/placeOrderPrice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="10dp"
+        android:text="TextView"
+        android:textColor="#F56C6C"
+        android:textSize="18sp"
+        app:layout_constraintStart_toEndOf="@+id/placeOrderImage"
+        app:layout_constraintTop_toBottomOf="@+id/placeOrderName" />
+
+    <LinearLayout
+        android:layout_width="110dp"
+        android:layout_height="36dp"
+        android:layout_marginEnd="13dp"
+        android:layout_marginBottom="20dp"
+        android:orientation="horizontal"
+        android:weightSum="10"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <TextView
+            android:id="@+id/orderLessLabel"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="3"
+            android:gravity="center"
+            android:text="@string/place_less_label"
+            android:textSize="22dp" />
+
+        <Button
+            android:id="@+id/orderCountBtn"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="4"
+            android:enabled="false"
+            android:gravity="center"
+            android:text="@string/place_order_count_init"
+            android:textColor="#606266"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/orderAddLabel"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="3"
+            android:gravity="center"
+            android:text="@string/place_add_label"
+            android:textSize="22dp" />
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

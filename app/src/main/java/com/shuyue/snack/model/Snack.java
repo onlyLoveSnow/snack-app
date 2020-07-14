@@ -30,6 +30,11 @@ public class Snack implements Serializable {
      */
     private String detail;
 
+    /**
+     * 小吃数量
+     */
+    private int count;
+
     public Snack() {
     }
 
@@ -38,6 +43,7 @@ public class Snack implements Serializable {
         this.price = price;
         this.image = image;
         this.detail = detail;
+        this.count = 1;
     }
 
     public static long getSerialVersionUID() {
@@ -74,6 +80,14 @@ public class Snack implements Serializable {
 
     public void setDetail(String detail) {
         this.detail = detail;
+    }
+
+    public int getCount() {
+        return count;
+    }
+
+    public void setCount(int count) {
+        this.count = count;
     }
 
     /**
