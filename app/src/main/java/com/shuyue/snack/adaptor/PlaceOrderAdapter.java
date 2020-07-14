@@ -1,5 +1,7 @@
 package com.shuyue.snack.adaptor;
 
+import android.util.Log;
+
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.viewholder.BaseViewHolder;
 import com.shuyue.snack.R;
@@ -23,5 +25,6 @@ public class PlaceOrderAdapter extends BaseQuickAdapter<Snack, BaseViewHolder> {
         baseViewHolder.setImageResource(R.id.placeOrderImage, snack.getImage());
         baseViewHolder.setText(R.id.placeOrderName, snack.getName());
         baseViewHolder.setText(R.id.placeOrderPrice, "￥" + String.valueOf(snack.getPrice()));
+        baseViewHolder.setText(R.id.orderCountBtn, String.valueOf(snack.getCount()));
     }
 }

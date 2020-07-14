@@ -17,6 +17,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
+import com.chad.library.adapter.base.listener.OnItemChildClickListener;
 import com.shuyue.snack.MyApplication;
 import com.shuyue.snack.R;
 import com.shuyue.snack.adaptor.PlaceOrderAdapter;
@@ -67,12 +68,13 @@ public class PlaceFragment extends Fragment {
         orderRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
         initOrderAdapter();
-        initClick();
+//        initClick();
     }
 
     @Override
     public void onResume() {
         super.onResume();
+        // 每次页面显示都计算合计金额
         calcTotalMoney();
     }
 
@@ -86,6 +88,37 @@ public class PlaceFragment extends Fragment {
         orderAdapter.setAnimationEnable(true);
         orderAdapter.setAnimationWithDefault(BaseQuickAdapter.AnimationType.ScaleIn);
 
+        // 注册item内子控件id
+        orderAdapter.addChildClickViewIds(R.id.orderLessLabel, R.id.orderAddLabel);
+        // 子控件点击监听
+        orderAdapter.setOnItemChildClickListener(new OnItemChildClickListener() {
+            @Override
+            public void onItemChildClick(@NonNull BaseQuickAdapter adapter, @NonNull View view, int position) {
+                Snack snack = (Snack) adapter.getItem(position);
+                switch (view.getId()) {
+                    case R.id.orderLessLabel:
+                        // 点击减少数量
+                        if (snack.getCount() == 1) {
+                            MyApplication.getCartSnacks().remove(position);
+                        } else {
+                            MyApplication.getCartSnacks().get(position).setCount(snack.getCount() - 1);
+                        }
+
+                        adapter.notifyDataSetChanged();
+                        break;
+                    case R.id.orderAddLabel:
+                        // 点击添加数量
+                        MyApplication.getCartSnacks().get(position).setCount(snack.getCount() + 1);
+                        adapter.notifyDataSetChanged();
+                        break;
+                    default:
+                        break;
+                }
+                calcTotalMoney();
+            }
+        });
+
+
         // 设置适配器
         orderRecyclerView.setAdapter(orderAdapter);
     }
@@ -93,16 +126,14 @@ public class PlaceFragment extends Fragment {
     // 点击事件触发器
     @OnClick(R.id.placeBuyBtn)
     void initClick() {
-        buyButton.setOnClickListener(v -> {
-            // 清空购物车数据
-            MyApplication.getCartSnacks().removeAll(MyApplication.getCartSnacks());
-            // 通知适配器数据变化
-            orderAdapter.notifyDataSetChanged();
-            // 刷新总金额
-            calcTotalMoney();
+        // 清空购物车数据
+        MyApplication.getCartSnacks().removeAll(MyApplication.getCartSnacks());
+        // 通知适配器数据变化
+        orderAdapter.notifyDataSetChanged();
+        // 刷新总金额
+        calcTotalMoney();
 
-            Toast.makeText(getActivity(), "下单成功", Toast.LENGTH_SHORT).show();
-        });
+        Toast.makeText(getActivity(), "下单成功", Toast.LENGTH_SHORT).show();
     }
 
     // 计算合计金额
