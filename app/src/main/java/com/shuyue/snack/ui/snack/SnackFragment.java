@@ -22,6 +22,8 @@ import com.shuyue.snack.adaptor.SnackRightAdapter;
 import com.shuyue.snack.data.DataServer;
 import com.shuyue.snack.model.Snack;
 
+import java.util.ArrayList;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
@@ -60,9 +62,20 @@ public class SnackFragment extends Fragment {
         initRightAdapter();
     }
 
+    /**
+     * 初始化左边适配器
+     */
     private void initLeftAdapter() {
         // 实例化左边适配器对象
-        SnackLeftAdapter leftAdapter = new SnackLeftAdapter(DataServer.getTypeData());
+        SnackLeftAdapter leftAdapter = new SnackLeftAdapter(new ArrayList<String>() {
+            {
+                add("淑悦我爱你");
+                add("我爱淑悦");
+                add("只爱淑悦");
+                add("心里只有淑悦");
+                add("我家淑悦");
+            }
+        });
         // 设置动画效果
         leftAdapter.setAnimationEnable(true);
         leftAdapter.setAnimationWithDefault(BaseQuickAdapter.AnimationType.SlideInLeft);
@@ -80,6 +93,9 @@ public class SnackFragment extends Fragment {
         leftRecyclerview.setAdapter(leftAdapter);
     }
 
+    /**
+     * 初始化右边适配器
+     */
     public void initRightAdapter() {
         // 实例化右边适配器对象
         SnackRightAdapter rightAdapter = new SnackRightAdapter(DataServer.getSnack());
