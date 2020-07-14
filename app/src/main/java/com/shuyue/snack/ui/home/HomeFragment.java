@@ -13,6 +13,7 @@ import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
+import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.shuyue.snack.R;
 import com.shuyue.snack.adaptor.HomeAdapter;
 import com.shuyue.snack.animator.MyAnimation;
@@ -53,7 +54,8 @@ public class HomeFragment extends Fragment {
         HomeAdapter adapter = new HomeAdapter(DataServer.getSnack());
         // 设置动画效果
         adapter.setAnimationEnable(true);
-        adapter.setAdapterAnimation(new MyAnimation());
+        adapter.setAnimationWithDefault(BaseQuickAdapter.AnimationType.SlideInBottom);
+//        adapter.setAdapterAnimation(new MyAnimation());
         // 设置头部
         adapter.setHeaderView(getHeadView(), 1);
         // 设置尾部
@@ -61,6 +63,7 @@ public class HomeFragment extends Fragment {
 
         // 设置适配器
         homeRecyclerView.setAdapter(adapter);
+        homeRecyclerView.scheduleLayoutAnimation();
     }
 
     /**

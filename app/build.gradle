@@ -48,6 +48,6 @@ dependencies {
     // 引入BaseRecyclerViewAdapterHelper库
     implementation 'com.github.CymChad:BaseRecyclerViewAdapterHelper:3.0.4'
 
-    // 引入CircleImageView图片控件
-    implementation 'de.hdodenhof:circleimageview:3.1.0'
+    // 引入Picasso图片加载库
+    implementation 'com.squareup.picasso:picasso:2.71828'
 }
