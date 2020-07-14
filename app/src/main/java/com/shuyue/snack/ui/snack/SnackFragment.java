@@ -102,6 +102,8 @@ public class SnackFragment extends Fragment {
         // 设置动画效果
         rightAdapter.setAnimationEnable(true);
         rightAdapter.setAnimationWithDefault(BaseQuickAdapter.AnimationType.SlideInRight);
+        // 设置尾部
+        rightAdapter.addFooterView(getFooterView());
 
         // 左边列表点击事件
         rightAdapter.addChildClickViewIds(R.id.snackRightAddBtn);
@@ -116,5 +118,12 @@ public class SnackFragment extends Fragment {
 
         // 设置右边列表适配器
         rightRecyclerView.setAdapter(rightAdapter);
+    }
+
+    /**
+     * 小吃页面右边RecyclerView尾部View
+     */
+    private View getFooterView() {
+        return getLayoutInflater().inflate(R.layout.footer_no_item, rightRecyclerView, false);
     }
 }
