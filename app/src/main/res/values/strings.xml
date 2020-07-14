@@ -10,4 +10,5 @@
     <string name="place_less_label">-</string>
     <string name="place_add_label">+</string>
     <string name="place_order_count_init">1</string>
+    <string name="footer_label">— 没有更多啦😄 —</string>
 </resources>
