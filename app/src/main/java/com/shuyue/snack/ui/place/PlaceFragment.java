@@ -16,6 +16,7 @@ import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.shuyue.snack.MyApplication;
 import com.shuyue.snack.R;
 import com.shuyue.snack.adaptor.PlaceOrderAdapter;
@@ -79,7 +80,11 @@ public class PlaceFragment extends Fragment {
      * 初始化购物车列表适配器
      */
     private void initOrderAdapter() {
+        // 实例化购物车列表适配器对象
         orderAdapter = new PlaceOrderAdapter(MyApplication.getCartSnacks());
+        // 设置动画效果
+        orderAdapter.setAnimationEnable(true);
+        orderAdapter.setAnimationWithDefault(BaseQuickAdapter.AnimationType.ScaleIn);
 
         // 设置适配器
         orderRecyclerView.setAdapter(orderAdapter);

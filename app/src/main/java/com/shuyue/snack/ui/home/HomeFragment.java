@@ -10,12 +10,12 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProviders;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
 import com.shuyue.snack.R;
 import com.shuyue.snack.adaptor.HomeAdapter;
+import com.shuyue.snack.animator.MyAnimation;
 import com.shuyue.snack.data.DataServer;
 
 import butterknife.BindView;
@@ -49,7 +49,11 @@ public class HomeFragment extends Fragment {
     }
 
     private void initHomeAdapter() {
+        // 实例化购物车列表适配器对象
         HomeAdapter adapter = new HomeAdapter(DataServer.getSnack());
+        // 设置动画效果
+        adapter.setAnimationEnable(true);
+        adapter.setAdapterAnimation(new MyAnimation());
         // 设置头部
         adapter.setHeaderView(getHeadView(), 1);
         // 设置尾部

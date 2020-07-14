@@ -9,7 +9,7 @@ import com.chad.library.adapter.base.animation.BaseAnimation;
 
 import org.jetbrains.annotations.NotNull;
 
-public class SnackLeftAnimation implements BaseAnimation {
+public class MyAnimation implements BaseAnimation {
     @NotNull
     @Override
     public Animator[] animators(@NotNull View view) {
