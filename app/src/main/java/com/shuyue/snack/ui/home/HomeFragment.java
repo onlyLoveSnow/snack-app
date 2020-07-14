@@ -12,6 +12,7 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
 import com.shuyue.snack.R;
 import com.shuyue.snack.adaptor.HomeAdapter;
@@ -41,7 +42,8 @@ public class HomeFragment extends Fragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
-        homeRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+//        homeRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+        homeRecyclerView.setLayoutManager(new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL));
 
         initHomeAdapter();
     }

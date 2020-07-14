@@ -133,35 +133,35 @@ public class DataServer {
     public static List<Snack> getSnack() {
         return new ArrayList<Snack>() {
             {
-                add(new Snack("爱着淑悦", 5201314, R.mipmap.avatar, "淑悦我爱你淑悦我爱你淑悦我爱你"));
-                add(new Snack("爱着淑悦", 5201314, R.mipmap.avatar, "淑悦我爱你淑悦我爱你淑悦我爱你"));
-                add(new Snack("爱着淑悦", 5201314, R.mipmap.avatar, "淑悦我爱你淑悦我爱你淑悦我爱你"));
-                add(new Snack("爱着淑悦", 5201314, R.mipmap.avatar, "淑悦我爱你淑悦我爱你淑悦我爱你"));
-                add(new Snack("爱着淑悦", 5201314, R.mipmap.avatar, "淑悦我爱你淑悦我爱你淑悦我爱你"));
-                add(new Snack("爱着淑悦", 5201314, R.mipmap.avatar, "淑悦我爱你淑悦我爱你淑悦我爱你"));
-                add(new Snack("爱着淑悦", 5201314, R.mipmap.avatar, "淑悦我爱你淑悦我爱你淑悦我爱你"));
-                add(new Snack("爱着淑悦", 5201314, R.mipmap.avatar, "淑悦我爱你淑悦我爱你淑悦我爱你"));
-                add(new Snack("爱着淑悦", 5201314, R.mipmap.avatar, "淑悦我爱你淑悦我爱你淑悦我爱你"));
-                add(new Snack("爱着淑悦", 5201314, R.mipmap.avatar, "淑悦我爱你淑悦我爱你淑悦我爱你"));
-                add(new Snack("爱着淑悦", 5201314, R.mipmap.avatar, "淑悦我爱你淑悦我爱你淑悦我爱你"));
-                add(new Snack("爱着淑悦", 5201314, R.mipmap.avatar, "淑悦我爱你淑悦我爱你淑悦我爱你"));
-                add(new Snack("爱着淑悦", 5201314, R.mipmap.avatar, "淑悦我爱你淑悦我爱你淑悦我爱你"));
-                add(new Snack("爱着淑悦", 5201314, R.mipmap.avatar, "淑悦我爱你淑悦我爱你淑悦我爱你"));
-                add(new Snack("爱着淑悦", 5201314, R.mipmap.avatar, "淑悦我爱你淑悦我爱你淑悦我爱你"));
-                add(new Snack("爱着淑悦", 5201314, R.mipmap.avatar, "淑悦我爱你淑悦我爱你淑悦我爱你"));
-                add(new Snack("爱着淑悦", 5201314, R.mipmap.avatar, "淑悦我爱你淑悦我爱你淑悦我爱你"));
-                add(new Snack("爱着淑悦", 5201314, R.mipmap.avatar, "淑悦我爱你淑悦我爱你淑悦我爱你"));
-                add(new Snack("爱着淑悦", 5201314, R.mipmap.avatar, "淑悦我爱你淑悦我爱你淑悦我爱你"));
-                add(new Snack("爱着淑悦", 5201314, R.mipmap.avatar, "淑悦我爱你淑悦我爱你淑悦我爱你"));
-                add(new Snack("爱着淑悦", 5201314, R.mipmap.avatar, "淑悦我爱你淑悦我爱你淑悦我爱你"));
-                add(new Snack("爱着淑悦", 5201314, R.mipmap.avatar, "淑悦我爱你淑悦我爱你淑悦我爱你"));
-                add(new Snack("爱着淑悦", 5201314, R.mipmap.avatar, "淑悦我爱你淑悦我爱你淑悦我爱你"));
-                add(new Snack("爱着淑悦", 5201314, R.mipmap.avatar, "淑悦我爱你淑悦我爱你淑悦我爱你"));
-                add(new Snack("爱着淑悦", 5201314, R.mipmap.avatar, "淑悦我爱你淑悦我爱你淑悦我爱你"));
-                add(new Snack("爱着淑悦", 5201314, R.mipmap.avatar, "淑悦我爱你淑悦我爱你淑悦我爱你"));
-                add(new Snack("爱着淑悦", 5201314, R.mipmap.avatar, "淑悦我爱你淑悦我爱你淑悦我爱你"));
-                add(new Snack("爱着淑悦", 5201314, R.mipmap.avatar, "淑悦我爱你淑悦我爱你淑悦我爱你"));
-                add(new Snack("爱着淑悦", 5201314, R.mipmap.avatar, "淑悦我爱你淑悦我爱你淑悦我爱你"));
+                add(new Snack("爱着淑悦", 5201314, R.mipmap.food, "淑悦我爱你淑悦我爱你淑悦我爱你"));
+                add(new Snack("爱着淑悦", 5201314, R.mipmap.food, "淑悦我爱你淑悦我爱你淑悦我爱你"));
+                add(new Snack("爱着淑悦", 5201314, R.mipmap.food, "淑悦我爱你淑悦我爱你淑悦我爱你"));
+                add(new Snack("爱着淑悦", 5201314, R.mipmap.food, "淑悦我爱你淑悦我爱你淑悦我爱你"));
+                add(new Snack("爱着淑悦", 5201314, R.mipmap.food, "淑悦我爱你淑悦我爱你淑悦我爱你"));
+                add(new Snack("爱着淑悦", 5201314, R.mipmap.food, "淑悦我爱你淑悦我爱你淑悦我爱你"));
+                add(new Snack("爱着淑悦", 5201314, R.mipmap.food, "淑悦我爱你淑悦我爱你淑悦我爱你"));
+                add(new Snack("爱着淑悦", 5201314, R.mipmap.food, "淑悦我爱你淑悦我爱你淑悦我爱你"));
+                add(new Snack("爱着淑悦", 5201314, R.mipmap.food, "淑悦我爱你淑悦我爱你淑悦我爱你"));
+                add(new Snack("爱着淑悦", 5201314, R.mipmap.food, "淑悦我爱你淑悦我爱你淑悦我爱你"));
+                add(new Snack("爱着淑悦", 5201314, R.mipmap.food, "淑悦我爱你淑悦我爱你淑悦我爱你"));
+                add(new Snack("爱着淑悦", 5201314, R.mipmap.food, "淑悦我爱你淑悦我爱你淑悦我爱你"));
+                add(new Snack("爱着淑悦", 5201314, R.mipmap.food, "淑悦我爱你淑悦我爱你淑悦我爱你"));
+                add(new Snack("爱着淑悦", 5201314, R.mipmap.food, "淑悦我爱你淑悦我爱你淑悦我爱你"));
+                add(new Snack("爱着淑悦", 5201314, R.mipmap.food, "淑悦我爱你淑悦我爱你淑悦我爱你"));
+                add(new Snack("爱着淑悦", 5201314, R.mipmap.food, "淑悦我爱你淑悦我爱你淑悦我爱你"));
+                add(new Snack("爱着淑悦", 5201314, R.mipmap.food, "淑悦我爱你淑悦我爱你淑悦我爱你"));
+                add(new Snack("爱着淑悦", 5201314, R.mipmap.food, "淑悦我爱你淑悦我爱你淑悦我爱你"));
+                add(new Snack("爱着淑悦", 5201314, R.mipmap.food, "淑悦我爱你淑悦我爱你淑悦我爱你"));
+                add(new Snack("爱着淑悦", 5201314, R.mipmap.food, "淑悦我爱你淑悦我爱你淑悦我爱你"));
+                add(new Snack("爱着淑悦", 5201314, R.mipmap.food, "淑悦我爱你淑悦我爱你淑悦我爱你"));
+                add(new Snack("爱着淑悦", 5201314, R.mipmap.food, "淑悦我爱你淑悦我爱你淑悦我爱你"));
+                add(new Snack("爱着淑悦", 5201314, R.mipmap.food, "淑悦我爱你淑悦我爱你淑悦我爱你"));
+                add(new Snack("爱着淑悦", 5201314, R.mipmap.food, "淑悦我爱你淑悦我爱你淑悦我爱你"));
+                add(new Snack("爱着淑悦", 5201314, R.mipmap.food, "淑悦我爱你淑悦我爱你淑悦我爱你"));
+                add(new Snack("爱着淑悦", 5201314, R.mipmap.food, "淑悦我爱你淑悦我爱你淑悦我爱你"));
+                add(new Snack("爱着淑悦", 5201314, R.mipmap.food, "淑悦我爱你淑悦我爱你淑悦我爱你"));
+                add(new Snack("爱着淑悦", 5201314, R.mipmap.food, "淑悦我爱你淑悦我爱你淑悦我爱你"));
+                add(new Snack("爱着淑悦", 5201314, R.mipmap.food, "淑悦我爱你淑悦我爱你淑悦我爱你"));
             }
         };
     }
