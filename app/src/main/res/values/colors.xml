@@ -6,4 +6,5 @@
 
     <!-- 我的颜色 -->
     <color name="colorBgWhite">#fff</color>
+    <color name="colorContent">#CCEEEEEE</color>
 </resources>
