@@ -3,6 +3,7 @@ package com.shuyue.snack;
 import android.app.Application;
 
 import com.shuyue.snack.model.Snack;
+import com.shuyue.snack.utils.Utils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,6 +32,10 @@ public class MyApplication extends Application {
     public void onCreate() {
         super.onCreate();
         appContext = this;
+        // 初始化购物车集合
         cartSnacks = new ArrayList<>();
+
+        // 初始化工具类
+        Utils.init(this);
     }
 }
