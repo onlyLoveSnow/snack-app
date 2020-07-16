@@ -1,13 +1,14 @@
 package com.shuyue.snack.ui.snack;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -21,6 +22,7 @@ import com.shuyue.snack.adaptor.SnackLeftAdapter;
 import com.shuyue.snack.adaptor.SnackRightAdapter;
 import com.shuyue.snack.data.DataServer;
 import com.shuyue.snack.model.Snack;
+import com.shuyue.snack.utils.Tips;
 
 import java.util.ArrayList;
 
@@ -78,14 +80,21 @@ public class SnackFragment extends Fragment {
         });
         // 设置动画效果
         leftAdapter.setAnimationEnable(true);
+        leftAdapter.setAnimationFirstOnly(false);
         leftAdapter.setAnimationWithDefault(BaseQuickAdapter.AnimationType.SlideInLeft);
+
+//        leftAdapter.getItem(0)
 
         // 触发点击按钮
         leftAdapter.setOnItemClickListener(new OnItemClickListener() {
+            @SuppressLint("ResourceAsColor")
             @Override
             public void onItemClick(@NonNull BaseQuickAdapter<?, ?> adapter, @NonNull View view, int position) {
                 String item = (String) adapter.getItem(position);
-                Toast.makeText(getActivity(), "点击了" + item, Toast.LENGTH_SHORT).show();
+
+                view.setBackgroundColor(ContextCompat.getColor(getActivity(), R.color.colorBgWhite));
+//                Toast.makeText(getActivity(), "点击了" + item, Toast.LENGTH_SHORT).show();
+                Tips.show("点击了" + item);
             }
         });
 
@@ -101,18 +110,24 @@ public class SnackFragment extends Fragment {
         SnackRightAdapter rightAdapter = new SnackRightAdapter(DataServer.getSnack());
         // 设置动画效果
         rightAdapter.setAnimationEnable(true);
+        rightAdapter.setAnimationFirstOnly(false);
         rightAdapter.setAnimationWithDefault(BaseQuickAdapter.AnimationType.SlideInRight);
         // 设置尾部
         rightAdapter.addFooterView(getFooterView());
 
-        // 左边列表点击事件
+        // 左边列表加入购物车点击事件
         rightAdapter.addChildClickViewIds(R.id.snackRightAddBtn);
         rightAdapter.setOnItemChildClickListener((adapter, view, position) -> {
             Snack snack = (Snack) adapter.getItem(position);
             if (view.getId() == R.id.snackRightAddBtn) {
-                // 添加到购物车
-                MyApplication.getCartSnacks().add(snack);
-                Toast.makeText(getActivity(), "已添加" + snack.getName() + "到购物车", Toast.LENGTH_SHORT).show();
+                if (!MyApplication.getCartSnacks().contains(snack)) {
+                    // 添加到购物车
+                    MyApplication.getCartSnacks().add(snack);
+//                Toast.makeText(getActivity(), "已添加" + snack.getName() + "到购物车", Toast.LENGTH_SHORT).show();
+                    Tips.show("已添加" + snack.getName() + "到购物车");
+                } else {
+                    Tips.show("已在购物车中，不能重复添加");
+                }
             }
         });
 

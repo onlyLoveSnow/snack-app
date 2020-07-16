@@ -22,6 +22,7 @@ import com.shuyue.snack.MyApplication;
 import com.shuyue.snack.R;
 import com.shuyue.snack.adaptor.PlaceOrderAdapter;
 import com.shuyue.snack.model.Snack;
+import com.shuyue.snack.utils.Tips;
 
 import java.math.BigDecimal;
 
@@ -86,6 +87,7 @@ public class PlaceFragment extends Fragment {
         orderAdapter = new PlaceOrderAdapter(MyApplication.getCartSnacks());
         // 设置动画效果
         orderAdapter.setAnimationEnable(true);
+//        orderAdapter.setAnimationFirstOnly(false);
         orderAdapter.setAnimationWithDefault(BaseQuickAdapter.AnimationType.ScaleIn);
 
         // 注册item内子控件id
@@ -118,7 +120,6 @@ public class PlaceFragment extends Fragment {
             }
         });
 
-
         // 设置适配器
         orderRecyclerView.setAdapter(orderAdapter);
     }
@@ -126,14 +127,19 @@ public class PlaceFragment extends Fragment {
     // 点击事件触发器
     @OnClick(R.id.placeBuyBtn)
     void initClick() {
-        // 清空购物车数据
-        MyApplication.getCartSnacks().removeAll(MyApplication.getCartSnacks());
-        // 通知适配器数据变化
-        orderAdapter.notifyDataSetChanged();
-        // 刷新总金额
-        calcTotalMoney();
+        if (MyApplication.getCartSnacks().isEmpty()) {
+            Tips.show("购物车是空的啦！！！");
+        } else {
+            // 清空购物车数据
+            MyApplication.getCartSnacks().removeAll(MyApplication.getCartSnacks());
+            // 通知适配器数据变化
+            orderAdapter.notifyDataSetChanged();
+            // 刷新总金额
+            calcTotalMoney();
 
-        Toast.makeText(getActivity(), "下单成功", Toast.LENGTH_SHORT).show();
+//        Toast.makeText(getActivity(), "下单成功", Toast.LENGTH_SHORT).show();
+            Tips.show("下单成功");
+        }
     }
 
     // 计算合计金额

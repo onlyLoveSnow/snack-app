@@ -17,7 +17,10 @@ import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.shuyue.snack.R;
 import com.shuyue.snack.adaptor.HomeAdapter;
 import com.shuyue.snack.animator.MyAnimation;
+import com.shuyue.snack.animator.MyAnimation2;
+import com.shuyue.snack.animator.MyAnimation3;
 import com.shuyue.snack.data.DataServer;
+import com.shuyue.snack.utils.Tips;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -54,8 +57,9 @@ public class HomeFragment extends Fragment {
         HomeAdapter adapter = new HomeAdapter(DataServer.getSnack());
         // 设置动画效果
         adapter.setAnimationEnable(true);
-        adapter.setAnimationWithDefault(BaseQuickAdapter.AnimationType.SlideInBottom);
-//        adapter.setAdapterAnimation(new MyAnimation());
+        adapter.setAnimationFirstOnly(false);
+//        adapter.setAnimationWithDefault(BaseQuickAdapter.AnimationType.SlideInBottom);
+        adapter.setAdapterAnimation(new MyAnimation3());
         // 设置头部
         adapter.setHeaderView(getHeadView(), 1);
         // 设置尾部
@@ -75,7 +79,8 @@ public class HomeFragment extends Fragment {
         view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getActivity(), "点击了头部 淑悦我爱你", Toast.LENGTH_SHORT).show();
+//                Toast.makeText(getActivity(), "点击了头部 淑悦我爱你", Toast.LENGTH_SHORT).show();
+                Tips.show("点击了头部 淑悦我爱你");
             }
         });
 
