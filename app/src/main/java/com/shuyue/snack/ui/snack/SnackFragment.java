@@ -22,6 +22,9 @@ import com.shuyue.snack.MyApplication;
 import com.shuyue.snack.R;
 import com.shuyue.snack.adaptor.SnackLeftAdapter;
 import com.shuyue.snack.adaptor.SnackRightAdapter;
+import com.shuyue.snack.animator.MyAnimation;
+import com.shuyue.snack.animator.MyAnimation2;
+import com.shuyue.snack.animator.MyAnimation3;
 import com.shuyue.snack.data.DataServer;
 import com.shuyue.snack.model.Snack;
 import com.shuyue.snack.utils.Tips;
@@ -109,10 +112,9 @@ public class SnackFragment extends Fragment {
                     leftSelectPosition = position;
 
                     // 刷新右边列表
+//                    rightAdapter.setAnimationWithDefault(BaseQuickAdapter.AnimationType.SlideInBottom);
+                    rightAdapter.setAnimationEnable(false);
                     switch (position) {
-                        case 0:
-                            rightAdapter.setNewInstance(DataServer.getFujianList());
-                            break;
                         case 1:
                             rightAdapter.setNewInstance(DataServer.getGuangxiList());
                             break;
