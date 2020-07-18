@@ -14,12 +14,15 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
+import com.chad.library.adapter.base.listener.OnItemClickListener;
 import com.shuyue.snack.R;
+import com.shuyue.snack.activity.DetailActivity;
 import com.shuyue.snack.adaptor.HomeAdapter;
 import com.shuyue.snack.animator.MyAnimation;
 import com.shuyue.snack.animator.MyAnimation2;
 import com.shuyue.snack.animator.MyAnimation3;
 import com.shuyue.snack.data.DataServer;
+import com.shuyue.snack.model.Snack;
 import com.shuyue.snack.utils.Tips;
 
 import butterknife.BindView;
@@ -65,9 +68,17 @@ public class HomeFragment extends Fragment {
         // 设置尾部
         adapter.setFooterView(getFooterView(), 1);
 
+        // 点击事件监听器
+        adapter.setOnItemClickListener(new OnItemClickListener() {
+            @Override
+            public void onItemClick(@NonNull BaseQuickAdapter<?, ?> adapter, @NonNull View view, int position) {
+                Snack snack = (Snack) adapter.getItem(position);
+                DetailActivity.actionStart(getContext(), snack);
+            }
+        });
+
         // 设置适配器
         homeRecyclerView.setAdapter(adapter);
-        homeRecyclerView.scheduleLayoutAnimation();
     }
 
     /**
