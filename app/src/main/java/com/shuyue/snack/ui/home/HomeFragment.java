@@ -57,7 +57,7 @@ public class HomeFragment extends Fragment {
 
     private void initHomeAdapter() {
         // 实例化购物车列表适配器对象
-        HomeAdapter adapter = new HomeAdapter(DataServer.getSnack());
+        HomeAdapter adapter = new HomeAdapter(DataServer.getHomeList());
         // 设置动画效果
         adapter.setAnimationEnable(true);
         adapter.setAnimationFirstOnly(false);
@@ -90,7 +90,6 @@ public class HomeFragment extends Fragment {
         view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                Toast.makeText(getActivity(), "点击了头部 淑悦我爱你", Toast.LENGTH_SHORT).show();
                 Tips.show("点击了头部 淑悦我爱你");
             }
         });

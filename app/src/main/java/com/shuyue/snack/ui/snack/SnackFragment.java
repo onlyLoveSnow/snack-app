@@ -111,12 +111,22 @@ public class SnackFragment extends Fragment {
                     // 刷新右边列表
                     switch (position) {
                         case 0:
-                            rightAdapter.setNewInstance(DataServer.getSnack());
+                            rightAdapter.setNewInstance(DataServer.getFujianList());
                             break;
                         case 1:
-                            rightAdapter.setNewInstance(DataServer.getSnack1());
+                            rightAdapter.setNewInstance(DataServer.getGuangxiList());
+                            break;
+                        case 2:
+                            rightAdapter.setNewInstance(DataServer.getGuangzhouList());
+                            break;
+                        case 3:
+                            rightAdapter.setNewInstance(DataServer.getBeijingList());
+                            break;
+                        case  4:
+                            rightAdapter.setNewInstance(DataServer.getChongqingList());
                             break;
                         default:
+                            rightAdapter.setNewInstance(DataServer.getFujianList());
                             break;
                     }
                 }
@@ -132,7 +142,7 @@ public class SnackFragment extends Fragment {
      */
     public void initRightAdapter() {
         // 实例化右边适配器对象
-        rightAdapter = new SnackRightAdapter(DataServer.getSnack());
+        rightAdapter = new SnackRightAdapter(DataServer.getFujianList());
         // 设置动画效果
         rightAdapter.setAnimationEnable(true);
         rightAdapter.setAnimationFirstOnly(false);
