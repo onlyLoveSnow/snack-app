@@ -1,5 +1,7 @@
 package com.shuyue.snack.model;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.io.Serializable;
 import java.util.Objects;
 
@@ -117,5 +119,18 @@ public class Snack implements Serializable {
     @Override
     public int hashCode() {
         return Objects.hash(name);
+    }
+
+    @NotNull
+    @Override
+    public String toString() {
+        return "Snack{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", price=" + price +
+                ", image=" + image +
+                ", detail='" + detail + '\'' +
+                ", count=" + count +
+                '}';
     }
 }

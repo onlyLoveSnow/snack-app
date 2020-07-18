@@ -17,8 +17,8 @@ public class SnackRightAdapter extends BaseQuickAdapter<Snack, BaseViewHolder> {
 
     @Override
     protected void convert(@NotNull BaseViewHolder baseViewHolder, Snack snack) {
-        baseViewHolder.setImageResource(R.id.snackRightImage, snack.getImage());
-        baseViewHolder.setText(R.id.snackRightName, snack.getName());
-        baseViewHolder.setText(R.id.snackRightPrice, "￥" + String.valueOf(snack.getPrice()));
+        baseViewHolder.setImageResource(R.id.snackRightImage, snack.getImage())
+                .setText(R.id.snackRightName, snack.getName())
+                .setText(R.id.snackRightPrice, "￥" + snack.getPrice());
     }
 }

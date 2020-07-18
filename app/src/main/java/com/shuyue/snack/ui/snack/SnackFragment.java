@@ -1,7 +1,9 @@
 package com.shuyue.snack.ui.snack;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,19 +25,28 @@ import com.shuyue.snack.adaptor.SnackRightAdapter;
 import com.shuyue.snack.data.DataServer;
 import com.shuyue.snack.model.Snack;
 import com.shuyue.snack.utils.Tips;
+import com.shuyue.snack.utils.Utils;
 
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class SnackFragment extends Fragment {
 
+    // 小吃页面左边列表已选择的Position
+    private int leftSelectPosition = 0;
+
     @BindView(R.id.snackLeftRecyclerView)
     RecyclerView leftRecyclerview;
 
     @BindView(R.id.snackRightRecyclerView)
     RecyclerView rightRecyclerView;
+
+    // 右边适配器
+    private SnackRightAdapter rightAdapter;
 
     private SnackViewModel snackViewModel;
 
@@ -67,15 +78,16 @@ public class SnackFragment extends Fragment {
     /**
      * 初始化左边适配器
      */
+    @SuppressLint("ResourceAsColor")
     private void initLeftAdapter() {
         // 实例化左边适配器对象
         SnackLeftAdapter leftAdapter = new SnackLeftAdapter(new ArrayList<String>() {
             {
-                add("淑悦我爱你");
-                add("我爱淑悦");
-                add("只爱淑悦");
-                add("心里只有淑悦");
-                add("我家淑悦");
+                add("福建小吃");
+                add("广西小吃");
+                add("广州小吃");
+                add("北京小吃");
+                add("重庆小吃");
             }
         });
         // 设置动画效果
@@ -83,18 +95,31 @@ public class SnackFragment extends Fragment {
         leftAdapter.setAnimationFirstOnly(false);
         leftAdapter.setAnimationWithDefault(BaseQuickAdapter.AnimationType.SlideInLeft);
 
-//        leftAdapter.getItem(0)
-
         // 触发点击按钮
         leftAdapter.setOnItemClickListener(new OnItemClickListener() {
-            @SuppressLint("ResourceAsColor")
             @Override
             public void onItemClick(@NonNull BaseQuickAdapter<?, ?> adapter, @NonNull View view, int position) {
-                String item = (String) adapter.getItem(position);
+                if (position != leftSelectPosition) {
+                    String item = (String) adapter.getItem(position);
 
-                view.setBackgroundColor(ContextCompat.getColor(getActivity(), R.color.colorBgWhite));
-//                Toast.makeText(getActivity(), "点击了" + item, Toast.LENGTH_SHORT).show();
-                Tips.show("点击了" + item);
+                    // 原本选中的item变成未选中颜色
+                    Objects.requireNonNull(adapter.getViewByPosition(leftSelectPosition, R.id.snackLeftType)).setBackgroundResource(R.color.colorContent);
+                    // 当前item变成选中颜色
+                    Objects.requireNonNull(adapter.getViewByPosition(position, R.id.snackLeftType)).setBackgroundResource(R.color.colorBgWhite);
+                    leftSelectPosition = position;
+
+                    // 刷新右边列表
+                    switch (position) {
+                        case 0:
+                            rightAdapter.setNewInstance(DataServer.getSnack());
+                            break;
+                        case 1:
+                            rightAdapter.setNewInstance(DataServer.getSnack1());
+                            break;
+                        default:
+                            break;
+                    }
+                }
             }
         });
 
@@ -107,7 +132,7 @@ public class SnackFragment extends Fragment {
      */
     public void initRightAdapter() {
         // 实例化右边适配器对象
-        SnackRightAdapter rightAdapter = new SnackRightAdapter(DataServer.getSnack());
+        rightAdapter = new SnackRightAdapter(DataServer.getSnack());
         // 设置动画效果
         rightAdapter.setAnimationEnable(true);
         rightAdapter.setAnimationFirstOnly(false);
@@ -123,7 +148,6 @@ public class SnackFragment extends Fragment {
                 if (!MyApplication.getCartSnacks().contains(snack)) {
                     // 添加到购物车
                     MyApplication.getCartSnacks().add(snack);
-//                Toast.makeText(getActivity(), "已添加" + snack.getName() + "到购物车", Toast.LENGTH_SHORT).show();
                     Tips.show("已添加" + snack.getName() + "到购物车");
                 } else {
                     Tips.show("已在购物车中，不能重复添加");
