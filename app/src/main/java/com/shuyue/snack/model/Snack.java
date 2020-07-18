@@ -10,6 +10,8 @@ public class Snack implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
+    private int id;
+
     /**
      * 小吃名称
      */
@@ -48,6 +50,14 @@ public class Snack implements Serializable {
 
     public static long getSerialVersionUID() {
         return serialVersionUID;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getName() {
