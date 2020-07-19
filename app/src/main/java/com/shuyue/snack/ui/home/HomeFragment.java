@@ -69,12 +69,9 @@ public class HomeFragment extends Fragment {
         adapter.setFooterView(getFooterView(), 1);
 
         // 点击事件监听器
-        adapter.setOnItemClickListener(new OnItemClickListener() {
-            @Override
-            public void onItemClick(@NonNull BaseQuickAdapter<?, ?> adapter, @NonNull View view, int position) {
-                Snack snack = (Snack) adapter.getItem(position);
-                DetailActivity.actionStart(getContext(), snack);
-            }
+        adapter.setOnItemClickListener((adapter1, view, position) -> {
+            Snack snack = (Snack) adapter1.getItem(position);
+            DetailActivity.actionStart(getContext(), snack);
         });
 
         // 设置适配器
@@ -87,12 +84,7 @@ public class HomeFragment extends Fragment {
     private View getHeadView() {
         View view = getLayoutInflater().inflate(R.layout.head_home_image, homeRecyclerView, false);
 
-        view.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Tips.show("点击了头部 淑悦我爱你");
-            }
-        });
+        view.setOnClickListener(v -> Tips.show("点击了头部 淑悦我爱你"));
 
         return view;
     }

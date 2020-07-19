@@ -67,9 +67,7 @@ public class PlaceFragment extends Fragment {
         super.onActivityCreated(savedInstanceState);
 
         orderRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-
         initOrderAdapter();
-//        initClick();
     }
 
     @Override
@@ -93,31 +91,28 @@ public class PlaceFragment extends Fragment {
         // 注册item内子控件id
         orderAdapter.addChildClickViewIds(R.id.orderLessLabel, R.id.orderAddLabel);
         // 子控件点击监听
-        orderAdapter.setOnItemChildClickListener(new OnItemChildClickListener() {
-            @Override
-            public void onItemChildClick(@NonNull BaseQuickAdapter adapter, @NonNull View view, int position) {
-                Snack snack = (Snack) adapter.getItem(position);
-                switch (view.getId()) {
-                    case R.id.orderLessLabel:
-                        // 点击减少数量
-                        if (snack.getCount() == 1) {
-                            MyApplication.getCartSnacks().remove(position);
-                        } else {
-                            MyApplication.getCartSnacks().get(position).setCount(snack.getCount() - 1);
-                        }
+        orderAdapter.setOnItemChildClickListener((adapter, view, position) -> {
+            Snack snack = (Snack) adapter.getItem(position);
+            switch (view.getId()) {
+                case R.id.orderLessLabel:
+                    // 点击减少数量
+                    if (snack.getCount() == 1) {
+                        MyApplication.getCartSnacks().remove(position);
+                    } else {
+                        MyApplication.getCartSnacks().get(position).setCount(snack.getCount() - 1);
+                    }
 
-                        adapter.notifyDataSetChanged();
-                        break;
-                    case R.id.orderAddLabel:
-                        // 点击添加数量
-                        MyApplication.getCartSnacks().get(position).setCount(snack.getCount() + 1);
-                        adapter.notifyDataSetChanged();
-                        break;
-                    default:
-                        break;
-                }
-                calcTotalMoney();
+                    adapter.notifyDataSetChanged();
+                    break;
+                case R.id.orderAddLabel:
+                    // 点击添加数量
+                    MyApplication.getCartSnacks().get(position).setCount(snack.getCount() + 1);
+                    adapter.notifyDataSetChanged();
+                    break;
+                default:
+                    break;
             }
+            calcTotalMoney();
         });
 
         // 设置适配器

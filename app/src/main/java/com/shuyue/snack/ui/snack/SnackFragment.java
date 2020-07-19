@@ -99,38 +99,35 @@ public class SnackFragment extends Fragment {
         leftAdapter.setAnimationWithDefault(BaseQuickAdapter.AnimationType.SlideInLeft);
 
         // 触发点击按钮
-        leftAdapter.setOnItemClickListener(new OnItemClickListener() {
-            @Override
-            public void onItemClick(@NonNull BaseQuickAdapter<?, ?> adapter, @NonNull View view, int position) {
-                if (position != leftSelectPosition) {
-                    String item = (String) adapter.getItem(position);
+        leftAdapter.setOnItemClickListener((adapter, view, position) -> {
+            if (position != leftSelectPosition) {
+                String item = (String) adapter.getItem(position);
 
-                    // 原本选中的item变成未选中颜色
-                    Objects.requireNonNull(adapter.getViewByPosition(leftSelectPosition, R.id.snackLeftType)).setBackgroundResource(R.color.colorContent);
-                    // 当前item变成选中颜色
-                    Objects.requireNonNull(adapter.getViewByPosition(position, R.id.snackLeftType)).setBackgroundResource(R.color.colorBgWhite);
-                    leftSelectPosition = position;
+                // 原本选中的item变成未选中颜色
+                Objects.requireNonNull(adapter.getViewByPosition(leftSelectPosition, R.id.snackLeftType)).setBackgroundResource(R.color.colorContent);
+                // 当前item变成选中颜色
+                Objects.requireNonNull(adapter.getViewByPosition(position, R.id.snackLeftType)).setBackgroundResource(R.color.colorBgWhite);
+                leftSelectPosition = position;
 
-                    // 刷新右边列表
+                // 刷新右边列表
 //                    rightAdapter.setAnimationWithDefault(BaseQuickAdapter.AnimationType.SlideInBottom);
-                    rightAdapter.setAnimationEnable(false);
-                    switch (position) {
-                        case 1:
-                            rightAdapter.setNewInstance(DataServer.getGuangxiList());
-                            break;
-                        case 2:
-                            rightAdapter.setNewInstance(DataServer.getGuangzhouList());
-                            break;
-                        case 3:
-                            rightAdapter.setNewInstance(DataServer.getBeijingList());
-                            break;
-                        case  4:
-                            rightAdapter.setNewInstance(DataServer.getChongqingList());
-                            break;
-                        default:
-                            rightAdapter.setNewInstance(DataServer.getFujianList());
-                            break;
-                    }
+                rightAdapter.setAnimationEnable(false);
+                switch (position) {
+                    case 1:
+                        rightAdapter.setNewInstance(DataServer.getGuangxiList());
+                        break;
+                    case 2:
+                        rightAdapter.setNewInstance(DataServer.getGuangzhouList());
+                        break;
+                    case 3:
+                        rightAdapter.setNewInstance(DataServer.getBeijingList());
+                        break;
+                    case  4:
+                        rightAdapter.setNewInstance(DataServer.getChongqingList());
+                        break;
+                    default:
+                        rightAdapter.setNewInstance(DataServer.getFujianList());
+                        break;
                 }
             }
         });
