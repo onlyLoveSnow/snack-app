@@ -39,6 +39,8 @@ import butterknife.ButterKnife;
 
 public class SnackFragment extends Fragment {
 
+    private SnackViewModel snackViewModel;
+
     // 小吃页面左边列表已选择的Position
     private int leftSelectPosition = 0;
 
@@ -50,8 +52,6 @@ public class SnackFragment extends Fragment {
 
     // 右边适配器
     private SnackRightAdapter rightAdapter;
-
-    private SnackViewModel snackViewModel;
 
     public static SnackFragment newInstance() {
         return new SnackFragment();
