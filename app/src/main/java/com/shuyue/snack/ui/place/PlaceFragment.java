@@ -2,13 +2,11 @@ package com.shuyue.snack.ui.place;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -18,7 +16,6 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
-import com.chad.library.adapter.base.listener.OnItemChildClickListener;
 import com.shuyue.snack.MyApplication;
 import com.shuyue.snack.R;
 import com.shuyue.snack.adaptor.PlaceOrderAdapter;
@@ -84,6 +81,10 @@ public class PlaceFragment extends Fragment {
     private void initOrderAdapter() {
         // 实例化购物车列表适配器对象
         orderAdapter = new PlaceOrderAdapter(MyApplication.getCartSnacks());
+
+        // 设置空布局
+        orderAdapter.setEmptyView(getEmptyView());
+
         // 设置动画效果
         orderAdapter.setAnimationEnable(true);
 //        orderAdapter.setAnimationFirstOnly(false);
@@ -133,7 +134,6 @@ public class PlaceFragment extends Fragment {
             // 刷新总金额
             calcTotalMoney();
 
-//        Toast.makeText(getActivity(), "下单成功", Toast.LENGTH_SHORT).show();
             Tips.show("下单成功");
         }
     }
@@ -153,5 +153,12 @@ public class PlaceFragment extends Fragment {
         }
 
         placeMoney.setText("￥" + totalMoney.doubleValue());
+    }
+
+    /**
+     * 下单页面购物车空布局
+     */
+    private View getEmptyView() {
+        return getLayoutInflater().inflate(R.layout.empty_cart_view, orderRecyclerView, false);
     }
 }
