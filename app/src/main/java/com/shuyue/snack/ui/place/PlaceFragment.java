@@ -2,6 +2,7 @@ package com.shuyue.snack.ui.place;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -140,15 +141,17 @@ public class PlaceFragment extends Fragment {
     // 计算合计金额
     @SuppressLint("SetTextI18n")
     private void calcTotalMoney() {
-        BigDecimal totalMoney = new BigDecimal("0");
+        BigDecimal totalMoney = BigDecimal.valueOf(0);
 
-        // 遍历计算总金额
+        // 遍历计算总金额（解决舍入误差）
         if (!MyApplication.getCartSnacks().isEmpty()) {
             for (Snack snack : MyApplication.getCartSnacks()) {
-                totalMoney = totalMoney.add(BigDecimal.valueOf(snack.getPrice() * snack.getCount()));
+                // 小吃单价 × 小吃数量
+                BigDecimal tmp = BigDecimal.valueOf(snack.getPrice()).multiply(BigDecimal.valueOf(snack.getCount()));
+                totalMoney = totalMoney.add(tmp);
             }
         }
 
-        placeMoney.setText("￥" + totalMoney.toString());
+        placeMoney.setText("￥" + totalMoney.doubleValue());
     }
 }
