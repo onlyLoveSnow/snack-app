@@ -84,15 +84,7 @@ public class SnackFragment extends Fragment {
     @SuppressLint("ResourceAsColor")
     private void initLeftAdapter() {
         // 实例化左边适配器对象
-        SnackLeftAdapter leftAdapter = new SnackLeftAdapter(new ArrayList<String>() {
-            {
-                add("福建小吃");
-                add("广西小吃");
-                add("广州小吃");
-                add("北京小吃");
-                add("重庆小吃");
-            }
-        });
+        SnackLeftAdapter leftAdapter = new SnackLeftAdapter(DataServer.getSnackOrderList());
         // 设置动画效果
         leftAdapter.setAnimationEnable(true);
         leftAdapter.setAnimationFirstOnly(false);

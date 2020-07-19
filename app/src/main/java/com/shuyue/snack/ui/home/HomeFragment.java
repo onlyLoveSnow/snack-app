@@ -61,8 +61,8 @@ public class HomeFragment extends Fragment {
         // 设置动画效果
         adapter.setAnimationEnable(true);
         adapter.setAnimationFirstOnly(false);
-        adapter.setAnimationWithDefault(BaseQuickAdapter.AnimationType.SlideInBottom);
-//        adapter.setAdapterAnimation(new MyAnimation3());
+//        adapter.setAnimationWithDefault(BaseQuickAdapter.AnimationType.SlideInBottom);
+        adapter.setAdapterAnimation(new MyAnimation3());
         // 设置头部
         adapter.setHeaderView(getHeadView(), 1);
         // 设置尾部
