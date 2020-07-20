@@ -11,4 +11,7 @@
     <string name="place_add_label">+</string>
     <string name="place_order_count_init">1</string>
     <string name="footer_label">— 没有更多啦😄 —</string>
+    <string name="login_username_edit">请输入账号</string>
+    <string name="login_password_edit">请输入密码</string>
+    <string name="login_btn">登录</string>
 </resources>

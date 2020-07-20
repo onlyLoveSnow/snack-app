@@ -47,4 +47,10 @@ dependencies {
 
     // 引入BaseRecyclerViewAdapterHelper库
     implementation 'com.github.CymChad:BaseRecyclerViewAdapterHelper:3.0.4'
+
+    // 引入CircleImageView照片库
+    implementation 'de.hdodenhof:circleimageview:3.1.0'
+
+    // 引入Gson库
+    implementation 'com.google.code.gson:gson:2.8.6'
 }
