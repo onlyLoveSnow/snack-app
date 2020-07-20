@@ -1,7 +1,9 @@
 package com.shuyue.snack.data;
 
+import com.google.android.material.badge.BadgeDrawable;
 import com.shuyue.snack.R;
 import com.shuyue.snack.model.Snack;
+import com.shuyue.snack.model.User;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,6 +23,8 @@ public class DataServer {
     private static List<Snack> beijingList;
 
     private static List<Snack> chongqingList;
+
+    private static List<User> accountList;
 
     public static List<String> getTypeData() {
         return new ArrayList<String>() {
@@ -310,5 +314,15 @@ public class DataServer {
             }};
         }
         return chongqingList;
+    }
+
+    public static List<User> getAccountList() {
+        if (accountList == null) {
+            accountList = new ArrayList<User>() {{
+               add(new User("1369905136", "123456", "我爱的淑悦呀", R.mipmap.user1_head));
+                add(new User("17344227505", "123456", "9", R.mipmap.user2_head));
+            }};
+        }
+        return accountList;
     }
 }
