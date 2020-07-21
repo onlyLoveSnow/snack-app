@@ -33,7 +33,7 @@ public class UserDao {
         return gson.fromJson(userJson, User.class);
     }
 
-    public static void setUser(User user) {
+    public static void saveUser(User user) {
         String userJson = gson.toJson(user);
         SharedPreferences.Editor edit = data.edit();
         edit.putString("user", userJson);
@@ -41,7 +41,7 @@ public class UserDao {
     }
 
     /**
-     * 清楚登录用户信息和登录状态
+     * 清除登录用户信息和登录状态
      */
     public static void removeUserAndLoginStatus() {
         SharedPreferences.Editor edit = data.edit();
@@ -54,5 +54,18 @@ public class UserDao {
         SharedPreferences.Editor edit = data.edit();
         edit.clear();
         edit.apply();
+    }
+
+    /**
+     * 保存账号
+     */
+    public static void saveUsername(String username) {
+        SharedPreferences.Editor editor = data.edit();
+        editor.putString("username", username);
+        editor.apply();
+    }
+
+    public static String getUsername() {
+        return data.getString("username", "");
     }
 }

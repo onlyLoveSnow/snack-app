@@ -1,7 +1,5 @@
 package com.shuyue.snack.adaptor;
 
-import androidx.core.content.ContextCompat;
-
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.viewholder.BaseViewHolder;
 import com.shuyue.snack.R;
@@ -12,8 +10,8 @@ import java.util.List;
 
 public class SnackLeftAdapter extends BaseQuickAdapter<String, BaseViewHolder> {
 
-    public SnackLeftAdapter(List<String> typeList) {
-        super(R.layout.item_snack_left, typeList);
+    public SnackLeftAdapter(List<String> types) {
+        super(R.layout.item_snack_left, types);
     }
 
     /**

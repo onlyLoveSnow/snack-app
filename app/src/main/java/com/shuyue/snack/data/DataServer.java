@@ -1,11 +1,15 @@
 package com.shuyue.snack.data;
 
-import com.google.android.material.badge.BadgeDrawable;
+import android.annotation.SuppressLint;
+
 import com.shuyue.snack.R;
+import com.shuyue.snack.model.Order;
 import com.shuyue.snack.model.Snack;
 import com.shuyue.snack.model.User;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class DataServer {
@@ -26,187 +30,6 @@ public class DataServer {
 
     private static List<User> accountList;
 
-    public static List<String> getTypeData() {
-        return new ArrayList<String>() {
-            {
-                add("淑悦我爱你");
-                add("淑悦我爱你");
-                add("淑悦我爱你");
-                add("淑悦我爱你");
-                add("淑悦我爱你");
-                add("淑悦我爱你");
-                add("淑悦我爱你");
-                add("淑悦我爱你");
-                add("淑悦我爱你");
-                add("淑悦我爱你");
-                add("淑悦我爱你");
-                add("淑悦我爱你");
-                add("淑悦我爱你");
-                add("淑悦我爱你");
-                add("淑悦我爱你");
-                add("淑悦我爱你");
-                add("淑悦我爱你");
-                add("淑悦我爱你");
-                add("淑悦我爱你");
-                add("淑悦我爱你");
-                add("淑悦我爱你");
-                add("淑悦我爱你");
-                add("淑悦我爱你");
-                add("淑悦我爱你");
-                add("淑悦我爱你");
-                add("淑悦我爱你");
-                add("淑悦我爱你");
-                add("淑悦我爱你");
-                add("淑悦我爱你");
-                add("淑悦我爱你");
-                add("淑悦我爱你");
-                add("淑悦我爱你");
-                add("淑悦我爱你");
-                add("淑悦我爱你");
-                add("淑悦我爱你");
-                add("淑悦我爱你");
-                add("淑悦我爱你");
-                add("淑悦我爱你");
-                add("淑悦我爱你");
-                add("淑悦我爱你");
-                add("淑悦我爱你");
-                add("淑悦我爱你");
-                add("淑悦我爱你");
-                add("淑悦我爱你");
-                add("淑悦我爱你");
-                add("淑悦我爱你");
-                add("小雪我爱你");
-                add("小雪我爱你");
-                add("小雪我爱你");
-                add("小雪我爱你");
-                add("小雪我爱你");
-                add("小雪我爱你");
-                add("小雪我爱你");
-                add("小雪我爱你");
-                add("小雪我爱你");
-                add("小雪我爱你");
-                add("小雪我爱你");
-                add("小雪我爱你");
-                add("小雪我爱你");
-                add("小雪我爱你");
-                add("小雪我爱你");
-                add("小雪我爱你");
-                add("小雪我爱你");
-                add("小雪我爱你");
-                add("小雪我爱你");
-                add("小雪我爱你");
-                add("小雪我爱你");
-                add("小雪我爱你");
-                add("小雪我爱你");
-                add("小雪我爱你");
-                add("小雪我爱你");
-                add("小雪我爱你");
-                add("小雪我爱你");
-                add("小雪我爱你");
-                add("小雪我爱你");
-                add("小雪我爱你");
-                add("小雪我爱你");
-                add("小雪我爱你");
-                add("小雪我爱你");
-                add("小雪我爱你");
-                add("小雪我爱你");
-                add("小雪我爱你");
-                add("小雪我爱你");
-                add("小雪我爱你");
-                add("小雪我爱你");
-                add("小雪我爱你");
-                add("小雪我爱你");
-                add("小雪我爱你");
-                add("小雪我爱你");
-                add("小雪我爱你");
-                add("小雪我爱你");
-                add("小雪我爱你");
-                add("小雪我爱你");
-                add("小雪我爱你");
-                add("小雪我爱你");
-                add("小雪我爱你");
-                add("小雪我爱你");
-                add("小雪我爱你");
-                add("小雪我爱你");
-                add("小雪我爱你");
-                add("小雪我爱你");
-                add("小雪我爱你");
-                add("小雪我爱你");
-                add("小雪我爱你");
-                add("小雪我爱你");
-                add("小雪我爱你");
-                add("小雪我爱你");
-                add("小雪我爱你");
-                add("小雪我爱你");
-                add("小雪我爱你");
-                add("小雪我爱你");
-                add("小雪我爱你");
-                add("小雪我爱你");
-                add("小仙女我爱你");
-                add("长玉我爱你");
-            }
-        };
-    }
-
-    public static List<Snack> getSnack() {
-        return new ArrayList<Snack>() {
-            {
-                add(new Snack("爱着淑悦1", 5201314, R.mipmap.food, "淑悦我爱你淑悦我爱你淑悦我爱你"));
-                add(new Snack("爱着淑悦2", 5201314, R.mipmap.food, "淑悦我爱你淑悦我爱你淑悦我爱你"));
-                add(new Snack("爱着淑悦3", 5201314, R.mipmap.food, "淑悦我爱你淑悦我爱你淑悦我爱你"));
-                add(new Snack("爱着淑悦4", 5201314, R.mipmap.food, "淑悦我爱你淑悦我爱你淑悦我爱你"));
-                add(new Snack("爱着淑悦5", 5201314, R.mipmap.food, "淑悦我爱你淑悦我爱你淑悦我爱你"));
-                add(new Snack("爱着淑悦6", 5201314, R.mipmap.food, "淑悦我爱你淑悦我爱你淑悦我爱你"));
-                add(new Snack("爱着淑悦7", 5201314, R.mipmap.food, "淑悦我爱你淑悦我爱你淑悦我爱你"));
-                add(new Snack("爱着淑悦8", 5201314, R.mipmap.food, "淑悦我爱你淑悦我爱你淑悦我爱你"));
-                add(new Snack("爱着淑悦9", 5201314, R.mipmap.food, "淑悦我爱你淑悦我爱你淑悦我爱你"));
-                add(new Snack("爱着淑悦10", 5201314, R.mipmap.food, "淑悦我爱你淑悦我爱你淑悦我爱你"));
-                add(new Snack("爱着淑悦11", 5201314, R.mipmap.food, "淑悦我爱你淑悦我爱你淑悦我爱你"));
-                add(new Snack("爱着淑悦12", 5201314, R.mipmap.food, "淑悦我爱你淑悦我爱你淑悦我爱你"));
-                add(new Snack("爱着淑悦13", 5201314, R.mipmap.food, "淑悦我爱你淑悦我爱你淑悦我爱你"));
-                add(new Snack("爱着淑悦14", 5201314, R.mipmap.food, "淑悦我爱你淑悦我爱你淑悦我爱你"));
-                add(new Snack("爱着淑悦15", 5201314, R.mipmap.food, "淑悦我爱你淑悦我爱你淑悦我爱你"));
-                add(new Snack("爱着淑悦16", 5201314, R.mipmap.food, "淑悦我爱你淑悦我爱你淑悦我爱你"));
-                add(new Snack("爱着淑悦17", 5201314, R.mipmap.food, "淑悦我爱你淑悦我爱你淑悦我爱你"));
-                add(new Snack("爱着淑悦18", 5201314, R.mipmap.food, "淑悦我爱你淑悦我爱你淑悦我爱你"));
-                add(new Snack("爱着淑悦19", 5201314, R.mipmap.food, "淑悦我爱你淑悦我爱你淑悦我爱你"));
-                add(new Snack("爱着淑悦20", 5201314, R.mipmap.food, "淑悦我爱你淑悦我爱你淑悦我爱你"));
-                add(new Snack("爱着淑悦21", 5201314, R.mipmap.food, "淑悦我爱你淑悦我爱你淑悦我爱你"));
-                add(new Snack("爱着淑悦22", 5201314, R.mipmap.food, "淑悦我爱你淑悦我爱你淑悦我爱你"));
-                add(new Snack("爱着淑悦23", 5201314, R.mipmap.food, "淑悦我爱你淑悦我爱你淑悦我爱你"));
-                add(new Snack("爱着淑悦24", 5201314, R.mipmap.food, "淑悦我爱你淑悦我爱你淑悦我爱你"));
-                add(new Snack("爱着淑悦25", 5201314, R.mipmap.food, "淑悦我爱你淑悦我爱你淑悦我爱你"));
-                add(new Snack("爱着淑悦26", 5201314, R.mipmap.food, "淑悦我爱你淑悦我爱你淑悦我爱你"));
-                add(new Snack("爱着淑悦27", 5201314, R.mipmap.food, "淑悦我爱你淑悦我爱你淑悦我爱你"));
-                add(new Snack("爱着淑悦28", 5201314, R.mipmap.food, "淑悦我爱你淑悦我爱你淑悦我爱你"));
-                add(new Snack("爱着淑悦29", 5201314, R.mipmap.food, "淑悦我爱你淑悦我爱你淑悦我爱你"));
-            }
-        };
-    }
-
-    public static List<Snack> getSnack1() {
-        return new ArrayList<Snack>() {{
-            add(new Snack("小雪我爱你1", 1314, R.mipmap.food, "小雪我错了"));
-            add(new Snack("小雪我爱你2", 1314, R.mipmap.food, "小雪我错了"));
-            add(new Snack("小雪我爱你3", 1314, R.mipmap.food, "小雪我错了"));
-            add(new Snack("小雪我爱你", 1314, R.mipmap.food, "小雪我错了"));
-            add(new Snack("小雪我爱你", 1314, R.mipmap.food, "小雪我错了"));
-            add(new Snack("小雪我爱你", 1314, R.mipmap.food, "小雪我错了"));
-            add(new Snack("小雪我爱你", 1314, R.mipmap.food, "小雪我错了"));
-            add(new Snack("小雪我爱你", 1314, R.mipmap.food, "小雪我错了"));
-            add(new Snack("小雪我爱你", 1314, R.mipmap.food, "小雪我错了"));
-            add(new Snack("小雪我爱你", 1314, R.mipmap.food, "小雪我错了"));
-            add(new Snack("小雪我爱你", 1314, R.mipmap.food, "小雪我错了"));
-            add(new Snack("小雪我爱你", 1314, R.mipmap.food, "小雪我错了"));
-            add(new Snack("小雪我爱你", 1314, R.mipmap.food, "小雪我错了"));
-            add(new Snack("小雪我爱你", 1314, R.mipmap.food, "小雪我错了"));
-            add(new Snack("小雪我爱你", 1314, R.mipmap.food, "小雪我错了"));
-            add(new Snack("小雪我爱你", 1314, R.mipmap.food, "小雪我错了"));
-            add(new Snack("小雪我爱你", 1314, R.mipmap.food, "小雪我错了"));
-            add(new Snack("小雪我爱你", 1314, R.mipmap.food, "小雪我错了"));
-        }};
-    }
-
     /**
      * 首页数据
      */
@@ -219,6 +42,9 @@ public class DataServer {
                 add(new Snack("北京烤鸭", 88, R.mipmap.kaoya, "烤鸭是具有世界声誉的北京著名菜式，起源于中国南北朝时期，《食珍录》中已记有炙鸭，在当时是宫廷食品。用料为优质肉食鸭北京鸭，果木炭火烤制，色泽红润，肉质肥而不腻，外脆里嫩。北京烤鸭分为两大流派，而北京最著名的烤鸭店也即是两派的代表。它以色泽红艳，肉质细嫩，味道醇厚，肥而不腻的特色，被誉为“天下美味”。"));
                 add(new Snack("火锅", 120, R.mipmap.huoguo, "火锅（英语：Hot Pot），古称“古董羹”，因食物投入沸水时发出的“咕咚”声而得名，它是中国独创的美食，历史悠久，是一种老少皆宜的食物。据考证，战国时期即有火锅，时人以陶罐为锅，到宋代，火锅的吃法在民间已十分常见，南宋林洪的《山家清供》食谱中，便有同友人吃火锅的介绍。元代，火锅流传到蒙古一带。到明清时期，火锅不仅在民间流行，而且成了一道著名的“宫廷菜”，用料是山鸡等野味。"));
                 add(new Snack("荔蒲芋头糕", 12, R.mipmap.yutougao, "荔蒲芋头糕，是广西的著名食品，是以荔浦香芋、粘米粉、腊肠、腊肉、叉烧、南乳、虾米和鲜虾为主要材料制作而成，营养丰富，老幼皆宜。"));
+                add(new Snack("叉烧", 28, R.mipmap.chashao, "叉烧是广东省传统的名菜，属于粤菜系。是广东烧味的一种。多呈红色，瘦肉做成，略甜。是把腌制后的瘦猪肉挂在特制的叉子上，放入炉内烧烤。好的叉烧应该肉质软嫩多汁、色泽鲜明、香味四溢。当中又以肥、瘦肉均衡为上佳，称之为“半肥瘦”。以叉烧做的其他菜色包括有：叉烧饭、叉烧包、叉烧酥等。"));
+                add(new Snack("艇仔粥", 12, R.mipmap.tingzaizhou, "艇仔粥一开始是为这些以小艇为生，专营供应水边及船上顾客的小商贩所经营的粥品，配料有生鱼片、瘦肉、油条丝、花生、葱花、蛋丝、浮皮、海蜇丝、叉烧丝、烧鸭丝和鱿鱼等，制作时只需将配料倒入滚烫的粥底中烫熟就能食用，因口感绵滑、味道鲜美而发扬光大，现成为广州十大名吃之一。"));
+                add(new Snack("抄手", 9, R.mipmap.chaoshou, "抄手是中国西南地区的一种面食。以面皮包肉馅，煮熟后加清汤、红油和其它调料即可食用。此种小吃柔嫩鲜美，汤汁微辣浓香。（同饺子差不多，不同的是抄手和饺子的包法不同，饺子是用圆面皮包而抄手则是用正方形面皮包），抄手包的时候可以明显看到是要折叠好几次才包好，而馄饨的包法可以是可以只需要捏来封口就能下锅，他们的馅料也有所不同，馄饨的馅料有猪肉、虾肉、蔬菜等，但抄手只用猪绞肉。"));
             }};
         }
         return homeList;
@@ -316,13 +142,25 @@ public class DataServer {
         return chongqingList;
     }
 
+    /**
+     * 用户账号信息
+     */
     public static List<User> getAccountList() {
         if (accountList == null) {
             accountList = new ArrayList<User>() {{
-               add(new User("1369905136", "123456", "我爱的淑悦呀", R.mipmap.user1_head));
-                add(new User("17344227505", "123456", "9", R.mipmap.user2_head));
+                add(new User("1369905136", "123456", "符淑悦", R.mipmap.user1_head));
+                add(new User("17344227505", "123456", "20170217137 符淑悦", R.mipmap.user2_head));
             }};
         }
         return accountList;
+    }
+
+    public static List<Order> getOrderTest() {
+        @SuppressLint("SimpleDateFormat") SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        return new ArrayList<Order>() {{
+            add(new Order("是我", R.mipmap.zhajiangmian, 10.9, simpleDateFormat.format(new Date())));
+            add(new Order("是我", R.mipmap.zhajiangmian, 10.9, simpleDateFormat.format(new Date())));
+            add(new Order("是我", R.mipmap.zhajiangmian, 10.9, simpleDateFormat.format(new Date())));
+        }};
     }
 }

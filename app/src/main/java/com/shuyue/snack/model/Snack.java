@@ -12,8 +12,6 @@ public class Snack implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    private int id;
-
     /**
      * 小吃名称
      */
@@ -48,18 +46,6 @@ public class Snack implements Serializable {
         this.image = image;
         this.detail = detail;
         this.count = 1;
-    }
-
-    public static long getSerialVersionUID() {
-        return serialVersionUID;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public String getName() {
@@ -125,8 +111,7 @@ public class Snack implements Serializable {
     @Override
     public String toString() {
         return "Snack{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
+                "name='" + name + '\'' +
                 ", price=" + price +
                 ", image=" + image +
                 ", detail='" + detail + '\'' +

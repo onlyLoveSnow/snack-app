@@ -1,16 +1,13 @@
 package com.shuyue.snack.ui.snack;
 
 import android.annotation.SuppressLint;
-import android.content.Context;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -20,18 +17,13 @@ import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.listener.OnItemClickListener;
 import com.shuyue.snack.MyApplication;
 import com.shuyue.snack.R;
+import com.shuyue.snack.activity.DetailActivity;
 import com.shuyue.snack.adaptor.SnackLeftAdapter;
 import com.shuyue.snack.adaptor.SnackRightAdapter;
-import com.shuyue.snack.animator.MyAnimation;
-import com.shuyue.snack.animator.MyAnimation2;
-import com.shuyue.snack.animator.MyAnimation3;
 import com.shuyue.snack.data.DataServer;
 import com.shuyue.snack.model.Snack;
 import com.shuyue.snack.utils.Tips;
-import com.shuyue.snack.utils.Utils;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Objects;
 
 import butterknife.BindView;
@@ -136,10 +128,19 @@ public class SnackFragment extends Fragment {
         rightAdapter = new SnackRightAdapter(DataServer.getFujianList());
         // 设置动画效果
         rightAdapter.setAnimationEnable(true);
-        rightAdapter.setAnimationFirstOnly(false);
+//        rightAdapter.setAnimationFirstOnly(false);
         rightAdapter.setAnimationWithDefault(BaseQuickAdapter.AnimationType.SlideInRight);
         // 设置尾部
         rightAdapter.addFooterView(getFooterView());
+
+        // 点击item事件
+        rightAdapter.setOnItemClickListener(new OnItemClickListener() {
+            @Override
+            public void onItemClick(@NonNull BaseQuickAdapter<?, ?> adapter, @NonNull View view, int position) {
+                Snack snack = (Snack) adapter.getItem(position);
+                DetailActivity.actionStart(getContext(), snack);
+            }
+        });
 
         // 左边列表加入购物车点击事件
         rightAdapter.addChildClickViewIds(R.id.snackRightAddBtn);
@@ -148,6 +149,7 @@ public class SnackFragment extends Fragment {
             if (view.getId() == R.id.snackRightAddBtn) {
                 if (!MyApplication.getCartSnacks().contains(snack)) {
                     // 添加到购物车
+                    snack.setCount(1);
                     MyApplication.getCartSnacks().add(snack);
                     Tips.show("已添加" + snack.getName() + "到购物车");
                 } else {

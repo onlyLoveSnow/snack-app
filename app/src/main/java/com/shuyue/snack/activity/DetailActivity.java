@@ -1,7 +1,5 @@
 package com.shuyue.snack.activity;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
@@ -9,13 +7,14 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.shuyue.snack.MyApplication;
 import com.shuyue.snack.R;
@@ -24,6 +23,7 @@ import com.shuyue.snack.utils.Tips;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 public class DetailActivity extends AppCompatActivity {
 
@@ -41,6 +41,9 @@ public class DetailActivity extends AppCompatActivity {
 
     @BindView(R.id.detailAddCartBtn)
     Button addCart;
+
+    @BindView(R.id.detailFavorite)
+    ImageView favorite;
 
     public static void actionStart(Context context, Snack snack) {
         Intent intent = new Intent(context, DetailActivity.class);
@@ -61,7 +64,6 @@ public class DetailActivity extends AppCompatActivity {
         Snack snack = (Snack) getIntent().getSerializableExtra("snack");
 
         if (snack != null) {
-
             image.setImageResource(snack.getImage());
             name.setText(snack.getName());
             price.setText("￥" + snack.getPrice());
@@ -70,6 +72,7 @@ public class DetailActivity extends AppCompatActivity {
             addCart.setOnClickListener(v -> {
                 if (!MyApplication.getCartSnacks().contains(snack)) {
                     // 添加到购物车
+                    snack.setCount(1);
                     MyApplication.getCartSnacks().add(snack);
                     Tips.show("已添加" + snack.getName() + "到购物车");
 
@@ -80,6 +83,16 @@ public class DetailActivity extends AppCompatActivity {
                 }
             });
         }
+    }
+
+    @OnClick(R.id.detailBack)
+    void clickBack() {
+        finish();
+    }
+
+    @OnClick(R.id.detailFavorite)
+    void clickFavorite() {
+        favorite.setImageResource(R.drawable.ic_baseline_favorite_24dp);
     }
 
     /**

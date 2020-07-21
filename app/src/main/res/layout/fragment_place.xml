@@ -26,7 +26,7 @@
             android:layout_marginStart="12dp"
             android:gravity="center"
             android:text="@string/place_money_label"
-            android:textSize="22sp" />
+            android:textSize="20sp" />
 
         <TextView
             android:id="@+id/placeMoney"
@@ -36,7 +36,14 @@
             android:gravity="center_vertical"
             android:text="￥100.0"
             android:textColor="#F56C6C"
-            android:textSize="26dp" />
+            android:textSize="22dp" />
+
+        <ImageView
+            android:id="@+id/deleteOrder"
+            android:layout_width="35dp"
+            android:layout_marginEnd="4sp"
+            android:layout_height="match_parent"
+            android:src="@drawable/ic_baseline_delete_24dp" />
 
         <Button
             android:id="@+id/placeBuyBtn"

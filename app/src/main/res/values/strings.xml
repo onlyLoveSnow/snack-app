@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Snack App</string>
+    <string name="app_name">小吃</string>
     <string name="title_home">首页</string>
     <string name="title_snack">点菜</string>
     <string name="title_place">下单</string>
@@ -10,8 +10,11 @@
     <string name="place_less_label">-</string>
     <string name="place_add_label">+</string>
     <string name="place_order_count_init">1</string>
-    <string name="footer_label">— 没有更多啦😄 —</string>
+    <string name="footer_label">— 没有更多啦~ —</string>
     <string name="login_username_edit">请输入账号</string>
     <string name="login_password_edit">请输入密码</string>
     <string name="login_btn">登录</string>
+    <string name="cart_empty_label">购物车是空的</string>
+    <string name="order_empty_label">还没有下单哦</string>
+    <string name="remarks_edit">请输入备注 留空则是用户默认口味</string>
 </resources>

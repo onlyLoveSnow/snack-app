@@ -10,6 +10,6 @@
         android:id="@+id/headHomeImage"
         android:layout_width="match_parent"
         android:layout_height="240dp"
-        android:scaleType="center"
-        app:srcCompat="@mipmap/food" />
+        android:scaleType="centerCrop"
+        app:srcCompat="@mipmap/home_image" />
 </LinearLayout>

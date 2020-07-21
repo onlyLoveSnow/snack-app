@@ -3,7 +3,6 @@ package com.shuyue.snack.activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.EditText;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -40,8 +39,21 @@ public class LoginActivity extends AppCompatActivity {
         setTitle("登录");
 
         ButterKnife.bind(this);
+
+        // 恢复账号
+        String username = UserDao.getUsername();
+        usernameEdit.setText(username);
     }
 
+    @Override
+    protected void onStop() {
+        super.onStop();
+        finish();
+    }
+
+    /**
+     * 登录按钮点击事件
+     */
     @OnClick(R.id.loginBtn)
     void login() {
         String username = usernameEdit.getText().toString();
@@ -57,8 +69,11 @@ public class LoginActivity extends AppCompatActivity {
             MyApplication.setUser(loginUser);
 
             // 持久化已登录用户数据
-            UserDao.setUser(loginUser);
+            UserDao.saveUser(loginUser);
             UserDao.isLogin(true);
+
+            // 持久化账号，以便退出登录后不用再输入账号
+            UserDao.saveUsername(username);
 
             // 关闭Activity
             finish();

@@ -1,10 +1,13 @@
 package com.shuyue.snack.ui.my;
 
 import android.annotation.SuppressLint;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -15,8 +18,10 @@ import androidx.lifecycle.ViewModelProviders;
 import com.shuyue.snack.MyApplication;
 import com.shuyue.snack.R;
 import com.shuyue.snack.activity.LoginActivity;
+import com.shuyue.snack.activity.OrderActivity;
 import com.shuyue.snack.dao.UserDao;
 import com.shuyue.snack.model.User;
+import com.shuyue.snack.utils.Tips;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -25,7 +30,7 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 public class MyFragment extends Fragment {
 
-    private MyViewModel dashboardViewModel;
+    private MyViewModel myViewModel;
 
     @BindView(R.id.myUserHead)
     CircleImageView image;
@@ -36,9 +41,15 @@ public class MyFragment extends Fragment {
     @BindView(R.id.myUserName)
     TextView username;
 
+    @BindView(R.id.myModifyView)
+    LinearLayout modifyView;
+
+    @BindView(R.id.myGeneralView)
+    LinearLayout generalView;
+
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        dashboardViewModel =
+        myViewModel =
                 ViewModelProviders.of(this).get(MyViewModel.class);
         View root = inflater.inflate(R.layout.fragment_my, container, false);
 
@@ -51,7 +62,6 @@ public class MyFragment extends Fragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
-        checkLogin();
         initView();
     }
 
@@ -71,29 +81,106 @@ public class MyFragment extends Fragment {
         }
     }
 
-    private void checkLogin() {
+    /**
+     * 点击头像
+     */
+    @OnClick(R.id.myUserHead)
+    void clickImage() {
         if (MyApplication.isLogin()) {
-            User user = MyApplication.getUser();
-            image.setImageResource(user.getHeadImage());
-            username.setText(user.getUsername());
-            nickname.setText(user.getNickname());
+            Tips.show("已登录");
+        } else {
+            LoginActivity.actionStart(getActivity());
         }
     }
 
-    @OnClick(R.id.myUserHead)
-    void clickImage() {
-        LoginActivity.actionStart(getActivity());
+    /**
+     * 点击我的订单
+     */
+    @OnClick(R.id.myOrderView)
+    void clickOrder() {
+        if (MyApplication.isLogin()) {
+            OrderActivity.actionStart(getContext());
+        } else {
+            Tips.show("请先登录");
+        }
     }
 
+    @OnClick(R.id.myModifyText)
+    void clickShowModify() {
+        if (modifyView.getVisibility() == View.GONE) {
+            modifyView.setVisibility(View.VISIBLE);
+        } else {
+            modifyView.setVisibility(View.GONE);
+        }
+    }
+
+    @OnClick(R.id.myGeneralText)
+    void clickShowGeneral() {
+        if (generalView.getVisibility() == View.GONE) {
+            generalView.setVisibility(View.VISIBLE);
+        } else {
+            generalView.setVisibility(View.GONE);
+        }
+    }
+
+    @OnClick(R.id.myModifyBtn)
+    void clickModifySubmit() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+        builder.setTitle("提示")
+                .setMessage("是否保存地址信息")
+                .setPositiveButton("取消", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                    }
+                })
+                .setPositiveButton("确定", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        modifyView.setVisibility(View.GONE);
+                    }
+                })
+                .create()
+                .show();
+    }
+
+    @OnClick(R.id.myGeneralBtn)
+    void clickGeneralSubmit() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+        builder.setTitle("提示")
+                .setMessage("是否保存通用设置")
+                .setPositiveButton("取消", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                    }
+                })
+                .setPositiveButton("确定", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        generalView.setVisibility(View.GONE);
+                    }
+                })
+                .create()
+                .show();
+    }
+
+    /**
+     * 点击退出登录
+     */
     @OnClick(R.id.logoutBtn)
-    void logout() {
-        // 清除持久化数据
-        UserDao.removeUserAndLoginStatus();
-        // 清除全局数据
-        MyApplication.isLogin(false);
-        MyApplication.setUser(null);
-        nickname.setText("未登录");
-        username.setText("");
-        image.setImageResource(R.mipmap.avatar);
+    void clickLogout() {
+        if (MyApplication.isLogin()) {
+            // 清除持久化数据
+            UserDao.removeUserAndLoginStatus();
+            // 清除全局数据
+            MyApplication.isLogin(false);
+            MyApplication.setUser(null);
+            nickname.setText("未登录");
+            username.setText("");
+            image.setImageResource(R.mipmap.logo);
+        } else {
+            Tips.show("还没有登录，请先登录");
+        }
     }
 }

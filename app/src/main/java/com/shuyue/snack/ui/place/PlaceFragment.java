@@ -1,6 +1,8 @@
 package com.shuyue.snack.ui.place;
 
 import android.annotation.SuppressLint;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,13 +18,19 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
+import com.chad.library.adapter.base.listener.OnItemClickListener;
 import com.shuyue.snack.MyApplication;
 import com.shuyue.snack.R;
+import com.shuyue.snack.activity.DetailActivity;
 import com.shuyue.snack.adaptor.PlaceOrderAdapter;
+import com.shuyue.snack.dao.OrderDao;
+import com.shuyue.snack.model.Order;
 import com.shuyue.snack.model.Snack;
 import com.shuyue.snack.utils.Tips;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -90,6 +98,15 @@ public class PlaceFragment extends Fragment {
 //        orderAdapter.setAnimationFirstOnly(false);
         orderAdapter.setAnimationWithDefault(BaseQuickAdapter.AnimationType.ScaleIn);
 
+        // 点击item事件触发
+        orderAdapter.setOnItemClickListener(new OnItemClickListener() {
+            @Override
+            public void onItemClick(@NonNull BaseQuickAdapter<?, ?> adapter, @NonNull View view, int position) {
+                Snack snack = (Snack) adapter.getItem(position);
+                DetailActivity.actionStart(getContext(), snack);
+            }
+        });
+
         // 注册item内子控件id
         orderAdapter.addChildClickViewIds(R.id.orderLessLabel, R.id.orderAddLabel);
         // 子控件点击监听
@@ -121,20 +138,88 @@ public class PlaceFragment extends Fragment {
         orderRecyclerView.setAdapter(orderAdapter);
     }
 
-    // 点击事件触发器
+    /**
+     * 点击下单按钮事件触发器
+     */
     @OnClick(R.id.placeBuyBtn)
     void initClick() {
         if (MyApplication.getCartSnacks().isEmpty()) {
             Tips.show("购物车是空的啦！！！");
         } else {
-            // 清空购物车数据
-            MyApplication.getCartSnacks().removeAll(MyApplication.getCartSnacks());
-            // 通知适配器数据变化
-            orderAdapter.notifyDataSetChanged();
-            // 刷新总金额
-            calcTotalMoney();
+            if (MyApplication.isLogin()) {
+                // 显示Dialog
+                showDialog();
+            } else {
+                Tips.show("请先登录");
+            }
+        }
+    }
 
-            Tips.show("下单成功");
+    /**
+     * 显示下单备注提示框
+     */
+    @SuppressLint("InflateParams")
+    public void showDialog() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+        LayoutInflater inflater = requireActivity().getLayoutInflater();
+
+        builder.setView(inflater.inflate(R.layout.dialog_view, null))
+                .setTitle("备注")
+                .setPositiveButton("下单", (dialog, which) -> {
+                    // 持久化订单数据
+                    saveOrder();
+
+                    // 清空购物车数据
+                    MyApplication.getCartSnacks().removeAll(MyApplication.getCartSnacks());
+                    // 通知适配器数据变化
+                    orderAdapter.notifyDataSetChanged();
+                    // 刷新总金额
+                    calcTotalMoney();
+
+                    Tips.show("下单成功");
+                })
+                .create()
+                .show();
+    }
+
+    /**
+     * 持久化订单数据
+     */
+    public void saveOrder() {
+        List<Order> orders = new ArrayList<>();
+        // 购物车数据产生订单
+        for (Snack snack : MyApplication.getCartSnacks()) {
+            Order order = new Order(snack);
+            order.setUsername(MyApplication.getUser().getUsername());
+            orders.add(order);
+        }
+
+        OrderDao.saveOrder(orders);
+    }
+
+    /**
+     * 点击垃圾桶事件触发器
+     */
+    @OnClick(R.id.deleteOrder)
+    void deleteOrder() {
+        if (MyApplication.getCartSnacks().isEmpty()) {
+            Tips.show("购物车是空的");
+        } else {
+            AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+            builder.setTitle("提示")
+                    .setMessage("是否清空购物车？")
+                    .setPositiveButton("确定", (dialog, which) -> {
+                        // 清空购物车数据
+                        MyApplication.getCartSnacks().removeAll(MyApplication.getCartSnacks());
+                        // 通知适配器数据变化
+                        orderAdapter.notifyDataSetChanged();
+                        // 刷新总金额
+                        calcTotalMoney();
+
+                        Tips.show("已清空购物车");
+                    })
+                    .create()
+                    .show();
         }
     }
 

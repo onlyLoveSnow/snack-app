@@ -6,6 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="false"
+    android:background="@color/colorBgWhite"
     tools:context=".activity.WelcomeActivity">
 
     <ImageView
@@ -17,7 +18,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@mipmap/food" />
+        app:srcCompat="@mipmap/welcome_image" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline"
